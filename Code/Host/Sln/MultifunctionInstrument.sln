@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Trial", "Trial", "{EF2AE282-668F-43F4-BE70-4E3FC48BB1CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{0F4E7F72-1011-497E-8822-793B34AA631F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HMI", "HMI", "{A054ED66-7E54-49D5-B421-77269FEB38B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.ShowInfo", "..\Trial\01.ShowInfo\01.ShowInfo.csproj", "{1B0BC7DD-4FFA-490A-943F-08CED09220EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B0BC7DD-4FFA-490A-943F-08CED09220EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B0BC7DD-4FFA-490A-943F-08CED09220EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B0BC7DD-4FFA-490A-943F-08CED09220EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B0BC7DD-4FFA-490A-943F-08CED09220EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1B0BC7DD-4FFA-490A-943F-08CED09220EF} = {EF2AE282-668F-43F4-BE70-4E3FC48BB1CA}
+	EndGlobalSection
+EndGlobal
