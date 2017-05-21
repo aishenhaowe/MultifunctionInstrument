@@ -31,7 +31,9 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.readOnlyPollingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,6 +42,7 @@
             this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.richTextBox1.Location = new System.Drawing.Point(12, 27);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
@@ -60,17 +63,33 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openDeviceToolStripMenuItem});
+            this.findDeviceToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.readOnlyPollingToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // openDeviceToolStripMenuItem
+            // findDeviceToolStripMenuItem
             // 
-            this.openDeviceToolStripMenuItem.Name = "openDeviceToolStripMenuItem";
-            this.openDeviceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.openDeviceToolStripMenuItem.Text = "Open";
-            this.openDeviceToolStripMenuItem.Click += new System.EventHandler(this.openDeviceToolStripMenuItem_Click);
+            this.findDeviceToolStripMenuItem.Name = "findDeviceToolStripMenuItem";
+            this.findDeviceToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.findDeviceToolStripMenuItem.Text = "Find";
+            this.findDeviceToolStripMenuItem.Click += new System.EventHandler(this.findDeviceToolStripMenuItem_Click);
+            // 
+            // readOnlyPollingToolStripMenuItem
+            // 
+            this.readOnlyPollingToolStripMenuItem.Name = "readOnlyPollingToolStripMenuItem";
+            this.readOnlyPollingToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.readOnlyPollingToolStripMenuItem.Text = "ReadOnlyPolling";
+            this.readOnlyPollingToolStripMenuItem.Click += new System.EventHandler(this.readOnlyPollingToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(171, 22);
+            this.toolStripMenuItem1.Text = "Open";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // MainForm
             // 
@@ -94,7 +113,9 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openDeviceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem findDeviceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem readOnlyPollingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 

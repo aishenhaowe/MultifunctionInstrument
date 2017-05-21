@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{0F4E7F72-1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HMI", "HMI", "{A054ED66-7E54-49D5-B421-77269FEB38B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.ShowInfo", "..\Trial\01.ShowInfo\01.ShowInfo.csproj", "{1B0BC7DD-4FFA-490A-943F-08CED09220EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.LibUsbDemo", "..\Trial\01.LibUsbDemo\01.LibUsbDemo.csproj", "{1B0BC7DD-4FFA-490A-943F-08CED09220EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
