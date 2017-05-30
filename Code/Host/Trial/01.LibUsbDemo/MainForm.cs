@@ -202,8 +202,17 @@ namespace _01.ShowInfo
 
         }
 
-        
+        private void cleanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = "";
+        }
 
-
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(richTextBox1.SelectedText))
+            {
+                Clipboard.SetDataObject(richTextBox1.SelectedText);
+            }
+        }
     }
 }
