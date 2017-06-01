@@ -33,6 +33,7 @@ namespace _01.ShowInfo
         public static UsbDevice MyUsbDevice;
 
         private UsbEndpointReader _reader;
+        private UsbEndpointWriter _writer;
         private bool _isOpened = false;
 
         #region SET YOUR USB Vendor and Product ID!
@@ -89,7 +90,7 @@ namespace _01.ShowInfo
             this.richTextBox1.Select(this.richTextBox1.TextLength, 0);//设置光标的位置到文本尾  
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void openDeviceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!_isOpened)
             {
@@ -119,9 +120,10 @@ namespace _01.ShowInfo
 
                 // open read endpoint 1.
                 _reader = MyUsbDevice.OpenEndpointReader(ReadEndpointID.Ep01);
+                _writer = MyUsbDevice.OpenEndpointWriter(WriteEndpointID.Ep02);
 
                 richTextBox1.Text += "The device has been opened\n";
-                toolStripMenuItem1.Text = "Close";
+                openDeviceToolStripMenuItem.Text = "Close";
                 _isOpened = true;
             }
             else
@@ -150,55 +152,17 @@ namespace _01.ShowInfo
                     UsbDevice.Exit();
 
                     richTextBox1.Text += "The device has been closed\n";
-                    toolStripMenuItem1.Text = "Open";
+                    openDeviceToolStripMenuItem.Text = "Open";
                     _isOpened = false;
                 }
             }
 
-            this.richTextBox1.Select(this.richTextBox1.TextLength, 0);//设置光标的位置到文本尾  
-            
+            this.richTextBox1.Select(this.richTextBox1.TextLength, 0);//设置光标的位置到文本尾
         }
 
         private void readOnlyPollingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ErrorCode ec = ErrorCode.None;
-
-            try
-            {
-                byte[] readBuffer = new byte[1024];
-                //while (ec == ErrorCode.None)
-                {
-                    int bytesRead;
-
-                    // If the device hasn't sent data in the last 5 seconds,
-                    // a timeout error (ec = IoTimedOut) will occur. 
-                    ec = _reader.Read(readBuffer, 5000, out bytesRead);
-
-                    if (bytesRead == 0) throw new Exception(string.Format("{0}:No more bytes!", ec));
-                    richTextBox1.Text += bytesRead.ToString() + "bytes read\n";
-                    Console.WriteLine("{0} bytes read", bytesRead);
-
-                    // Write that output to the console.
-                    richTextBox1.Text += Encoding.Default.GetString(readBuffer, 0, bytesRead);
-                    Console.Write(Encoding.Default.GetString(readBuffer, 0, bytesRead));
-                }
-
-                richTextBox1.Text += "\r\nDone!\r\n";
-                Console.WriteLine("\r\nDone!\r\n");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine();
-                richTextBox1.Text += (ec != ErrorCode.None ? ec + ":" : String.Empty) + ex.Message;
-                Console.WriteLine((ec != ErrorCode.None ? ec + ":" : String.Empty) + ex.Message);
-            }
-            finally
-            {
-               
-
-            }
-
-            this.richTextBox1.Select(this.richTextBox1.TextLength, 0);//设置光标的位置到文本尾  
+            
 
         }
 
@@ -214,5 +178,85 @@ namespace _01.ShowInfo
                 Clipboard.SetDataObject(richTextBox1.SelectedText);
             }
         }
+
+        private void writeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ErrorCode ec = ErrorCode.None;
+
+            if (!_isOpened)
+            {
+                richTextBox1.Text += "Please open the device first\n";
+                this.richTextBox1.Select(this.richTextBox1.TextLength, 0);//设置光标的位置到文本尾 
+                return;
+            }
+
+            try
+            {
+                byte[] writeBuffer = new byte[1024];
+                writeBuffer[0] = 0xC0;
+                writeBuffer[1] = 0x90;
+                writeBuffer[2] = 0x00;
+                writeBuffer[3] = 0x00;
+                writeBuffer[4] = 0x64;
+                writeBuffer[5] = 0x00;
+                writeBuffer[6] = 0x02;
+                writeBuffer[7] = 0x00;
+                int bytesWritten;
+                ec = _writer.Write(writeBuffer, 1024, out bytesWritten);
+                if (ec != ErrorCode.None) 
+                    throw new Exception(UsbDevice.LastErrorString);
+
+                richTextBox1.Text += string.Format("{0} bytes have been writen\n", bytesWritten);
+            }
+            catch (Exception ex)
+            {
+                richTextBox1.Text += (ec != ErrorCode.None ? ec + ":" : String.Empty) + ex.Message + "\n";
+            }
+
+            this.richTextBox1.Select(this.richTextBox1.TextLength, 0);//设置光标的位置到文本尾  
+        }
+
+        private void readToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ErrorCode ec = ErrorCode.None;
+
+            if (!_isOpened)
+            {
+                richTextBox1.Text += "Please open the device first\n";
+                this.richTextBox1.Select(this.richTextBox1.TextLength, 0);//设置光标的位置到文本尾 
+                return;
+            }
+
+            try
+            {
+                byte[] readBuffer = new byte[1024];
+                //while (ec == ErrorCode.None)
+                {
+                    int bytesRead;
+
+                    // If the device hasn't sent data in the last 5 seconds,
+                    // a timeout error (ec = IoTimedOut) will occur. 
+                    ec = _reader.Read(readBuffer, 5000, out bytesRead);
+
+                    if (bytesRead == 0) throw new Exception(string.Format("{0}:No more bytes!", ec));
+                    richTextBox1.Text += bytesRead.ToString() + "bytes read\n";
+
+                    // Write that output to the console.
+                    richTextBox1.Text += Encoding.Default.GetString(readBuffer, 0, bytesRead);
+                }
+
+                richTextBox1.Text += "\r\nDone!\r\n";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine();
+                richTextBox1.Text += (ec != ErrorCode.None ? ec + ":" : String.Empty) + ex.Message + "\n";
+            }
+
+            this.richTextBox1.Select(this.richTextBox1.TextLength, 0);//设置光标的位置到文本尾  
+        }
+
+        
+
     }
 }

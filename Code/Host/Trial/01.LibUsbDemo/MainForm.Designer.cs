@@ -30,16 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.findDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.readOnlyPollingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cleanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.readOnlyPollingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.writeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -56,10 +59,33 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cleanToolStripMenuItem,
+            this.copyToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(109, 48);
+            // 
+            // cleanToolStripMenuItem
+            // 
+            this.cleanToolStripMenuItem.Name = "cleanToolStripMenuItem";
+            this.cleanToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.cleanToolStripMenuItem.Text = "Clean";
+            this.cleanToolStripMenuItem.Click += new System.EventHandler(this.cleanToolStripMenuItem_Click);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(614, 25);
@@ -70,7 +96,7 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.findDeviceToolStripMenuItem,
-            this.toolStripMenuItem1,
+            this.openDeviceToolStripMenuItem,
             this.readOnlyPollingToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
@@ -83,12 +109,12 @@
             this.findDeviceToolStripMenuItem.Text = "Find";
             this.findDeviceToolStripMenuItem.Click += new System.EventHandler(this.findDeviceToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem1
+            // openDeviceToolStripMenuItem
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(171, 22);
-            this.toolStripMenuItem1.Text = "Open";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.openDeviceToolStripMenuItem.Name = "openDeviceToolStripMenuItem";
+            this.openDeviceToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.openDeviceToolStripMenuItem.Text = "Open";
+            this.openDeviceToolStripMenuItem.Click += new System.EventHandler(this.openDeviceToolStripMenuItem_Click);
             // 
             // readOnlyPollingToolStripMenuItem
             // 
@@ -97,27 +123,28 @@
             this.readOnlyPollingToolStripMenuItem.Text = "ReadOnlyPolling";
             this.readOnlyPollingToolStripMenuItem.Click += new System.EventHandler(this.readOnlyPollingToolStripMenuItem_Click);
             // 
-            // contextMenuStrip1
+            // toolsToolStripMenuItem
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cleanToolStripMenuItem,
-            this.copyToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.writeToolStripMenuItem,
+            this.readToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(52, 21);
+            this.toolsToolStripMenuItem.Text = "Tools";
             // 
-            // cleanToolStripMenuItem
+            // writeToolStripMenuItem
             // 
-            this.cleanToolStripMenuItem.Name = "cleanToolStripMenuItem";
-            this.cleanToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.cleanToolStripMenuItem.Text = "Clean";
-            this.cleanToolStripMenuItem.Click += new System.EventHandler(this.cleanToolStripMenuItem_Click);
+            this.writeToolStripMenuItem.Name = "writeToolStripMenuItem";
+            this.writeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.writeToolStripMenuItem.Text = "Write";
+            this.writeToolStripMenuItem.Click += new System.EventHandler(this.writeToolStripMenuItem_Click);
             // 
-            // copyToolStripMenuItem
+            // readToolStripMenuItem
             // 
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.copyToolStripMenuItem.Text = "Copy";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            this.readToolStripMenuItem.Name = "readToolStripMenuItem";
+            this.readToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.readToolStripMenuItem.Text = "Read";
+            this.readToolStripMenuItem.Click += new System.EventHandler(this.readToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -129,9 +156,9 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.contextMenuStrip1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,10 +171,13 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findDeviceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem readOnlyPollingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem openDeviceToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem cleanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem writeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem readToolStripMenuItem;
     }
 }
 
