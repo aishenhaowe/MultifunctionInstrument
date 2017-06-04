@@ -41,6 +41,7 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.writeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asyncWriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -127,7 +128,8 @@
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.writeToolStripMenuItem,
-            this.readToolStripMenuItem});
+            this.readToolStripMenuItem,
+            this.asyncWriteToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(52, 21);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -145,6 +147,13 @@
             this.readToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.readToolStripMenuItem.Text = "Read";
             this.readToolStripMenuItem.Click += new System.EventHandler(this.readToolStripMenuItem_Click);
+            // 
+            // asyncWriteToolStripMenuItem
+            // 
+            this.asyncWriteToolStripMenuItem.Name = "asyncWriteToolStripMenuItem";
+            this.asyncWriteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.asyncWriteToolStripMenuItem.Text = "Async Write";
+            this.asyncWriteToolStripMenuItem.Click += new System.EventHandler(this.asyncWriteToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -178,6 +187,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem writeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem readToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asyncWriteToolStripMenuItem;
     }
 }
 

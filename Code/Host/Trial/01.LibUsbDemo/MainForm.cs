@@ -24,6 +24,7 @@ using LibUsbDotNet;
 using LibUsbDotNet.Info;
 using LibUsbDotNet.Main;
 using System.Collections.ObjectModel;
+using System.Threading;
 
 
 namespace _01.ShowInfo
@@ -254,6 +255,32 @@ namespace _01.ShowInfo
             }
 
             this.richTextBox1.Select(this.richTextBox1.TextLength, 0);//设置光标的位置到文本尾  
+        }
+
+        private void asyncWriteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ErrorCode ecWrite;
+            int transferredOut;
+            UsbTransfer usbWriteTransfer;
+            string testWriteString = "HelloChen";
+            byte[] bytesToSend = Encoding.Default.GetBytes(testWriteString);
+
+            ecWrite = _writer.SubmitAsyncTransfer(bytesToSend, 0, bytesToSend.Length, 100, out usbWriteTransfer);
+            if (ecWrite != ErrorCode.None)
+            {
+                usbWriteTransfer.Dispose();
+                throw new Exception("Submit Async Write Failed.");
+            }
+
+            WaitHandle.WaitAll(new WaitHandle[] { usbWriteTransfer.AsyncWaitHandle}, 200, false);
+            if (!usbWriteTransfer.IsCompleted) 
+                usbWriteTransfer.Cancel();
+
+            ecWrite = usbWriteTransfer.Wait(out transferredOut);
+
+            usbWriteTransfer.Dispose();
+
+            richTextBox1.Text += string.Format("Write :{0} ErrorCode:{1}\n", transferredOut, ecWrite);
         }
 
         
